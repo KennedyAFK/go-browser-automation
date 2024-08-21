@@ -1,6 +1,6 @@
 # Automação de Navegador com Go e Chromedp
 
-Este projeto implementa uma automação de navegador simples utilizando Go e o pacote `chromedp`. A automação realiza login em um sistema, seleciona um armazém, busca por uma carga específica e processa as notas fiscais associadas. Ao final, uma notificação é enviada ao usuário, e o navegador permanece aberto para visualização.
+Este projeto implementa uma automação de navegador simples utilizando Go e o pacote `chromedp`. A automação realiza login em um sistema, seleciona um armazém, busca por uma carga específica e associa à ela as notas fiscais informadas pelo usuário. Ao final, uma notificação é enviada ao usuário, e o navegador permanece aberto para visualização.
 
 ## Pré-requisitos
 
