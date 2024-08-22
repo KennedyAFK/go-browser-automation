@@ -22,6 +22,8 @@ func main() {
 
 	)
     reader := bufio.NewReader(os.Stdin)
+
+    // Caso for utilizar para mais de um usuario onde eles usem usuarios diferentes para logar utilize as condições abaixo!
     
     //fmt.Print("Digite o nome de usuário: ")
     //username, _ := reader.ReadString('\n')
@@ -32,7 +34,7 @@ func main() {
     //password = password[:len(password)-1] // Remove o caractere de nova linha
 
 	// Solicitar armazém ao usuário
-    fmt.Print("Digite o armazém onde você está (WOLFF ou LYOR): ")
+    fmt.Print("Digite o armazém onde você está (1 ou 2): ")
     armazem, _ := reader.ReadString('\n')
     armazem = armazem[:len(armazem)-1] // Remove o caractere de nova linha
     armazem = strings.TrimSpace(strings.ToUpper(armazem)) // Normalizar a entrada
@@ -59,23 +61,23 @@ func main() {
 
     // Executar as tarefas de automação
     err := chromedp.Run(ctx,
-        chromedp.Navigate("https://rojemachml.seniorcloud.com.br/siltwms"),
+        chromedp.Navigate("where/to?.com"),
         chromedp.WaitVisible(`#LoginDialog_loginText`), // Ajuste os seletores conforme a página
-        chromedp.SendKeys(`#LoginDialog_loginText`, `kennedyy`),
-        chromedp.SendKeys(`#LoginDialog_passwordText`, `1234`),
+        chromedp.SendKeys(`#LoginDialog_loginText`, `teste`), // No lugar do 'teste' utilize um usuario padrão ou a variavel 'username' de acordo com a sua necessidade!
+        chromedp.SendKeys(`#LoginDialog_passwordText`, `teste`), // No lugar do 'teste' utilize a senha do usuario padrão ou a variavel 'password' de acordo com a sua necessidade!
 		chromedp.Click(`#LoginDialog_armazemComboBox`),
-		chromedp.WaitVisible(`#LoginDialog_armazemComboBox-LYOR`), // Ajuste os seletores conforme a página
+		chromedp.WaitVisible(`#LoginDialog_armazemComboBox-2`), // Ajuste os seletores conforme a página
 		chromedp.Sleep(1 * time.Second), // Aguarda a abertura do combobox
 
         // Selecionar o armazém informado
         chromedp.ActionFunc(func(ctx context.Context) error {
             fmt.Printf("Selecionando armazém: %s\n", armazem) // Debug: exibe o armazém selecionado
             switch armazem {
-            case "WOLFF":
+            case "1":
                 if err := chromedp.Click(`.x-combo-list-item:nth-of-type(2)`).Do(ctx); err != nil { // O segundo item
                     return err
                 }
-            case "LYOR":
+            case "2":
                 if err := chromedp.Click(`.x-combo-list-item:nth-of-type(1)`).Do(ctx); err != nil { // O primeiro item
                     return err
                 }
@@ -86,7 +88,7 @@ func main() {
         }),
         chromedp.Click(`#LoginDialog_loginButton`),
         chromedp.Sleep(2 * time.Second),
-		chromedp.Click(`.sample-box:nth-of-type(9)`),
+		chromedp.Click(`.sample-box:nth-of-type(2)`),
 
 		// Selecionar o campo de filtro e escrever o número de carga
 		chromedp.WaitVisible(`#filter-COLETA`), // Ajuste o seletor CSS para o campo de filtro
