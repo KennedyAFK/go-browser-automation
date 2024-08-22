@@ -67,7 +67,7 @@ O projeto utiliza as seguintes bibliotecas:
 
 ## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir [issues](https://github.com/seu-usuario/seu-repositorio/issues) ou enviar [pull requests](https://github.com/seu-usuario/seu-repositorio/pulls).
+Contribuições são bem-vindas! Sinta-se à vontade para abrir [issues](https://github.com/KennedyAFK/go-browser-automation/issues) ou enviar [pull requests](https://github.com/KennedyAFK/go-browser-automation/pulls).
 
 ## Licença
 
